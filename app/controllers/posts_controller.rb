@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete, :destroy]
+  before_action :authenticate_user!, only: [:index, :all_posts, :new, :create, :show, :edit, :update, :delete, :destroy]
   before_action :set_post, only: [:show]
   before_action :set_post_private, only: [:edit, :update, :delete, :destroy]
   
   def index
-    @posts = Post.all
+    @posts = current_user.posts
+  end
+
+  def all_posts
+    @post = Post.all
   end
 
   def new

@@ -17,6 +17,7 @@
         <td><%= image_tag(post.image, size: "100x100") %></td>
         <td><%= post.caption %></td>
         <td><%= post.user.name %></td>
+        <td><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></td>
         <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>
