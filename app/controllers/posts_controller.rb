@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete, :destroy]
-  before_action :set_post, only: [:show, :edit, :update, :delete, :destroy]
+  before_action :set_post, only: [:show]
+  before_action :set_post_private, only: [:edit, :update, :delete, :destroy]
   
   def index
     @posts = Post.all
@@ -51,7 +52,10 @@ class PostsController < ApplicationController
   private
   
   def set_post
-   
+    @post = Post.find(params[:id])
+  end
+
+  def set_post_private
     if  @post = current_user.posts.find_by(id: params[:id])
     else
       respond_to do |format|
