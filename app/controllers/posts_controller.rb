@@ -51,7 +51,13 @@ class PostsController < ApplicationController
   private
   
   def set_post
-    @post = Post.find(params[:id])
+   
+    if  @post = current_user.posts.find_by(id: params[:id])
+    else
+      respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Not Allowed' }
+      end
+    end 
   end
 
   def post_params
