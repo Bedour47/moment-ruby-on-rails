@@ -30,7 +30,7 @@
                           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'Edit', edit_post_path(post) %></button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
                         </div>
-                        <small class="text-muted">9 mins</small>
+                        <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
                     </div>
                 </div>
           </div>

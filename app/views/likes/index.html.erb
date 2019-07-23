@@ -20,7 +20,7 @@
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'View', post %></button>
                         </div>
-                        <small class="text-muted">9 mins</small>
+                        <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
                     </div>
                 </div>
           </div>
