@@ -1,8 +1,13 @@
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_post, only: [:show, :update, :destroy, :create]
   before_action :find_like, only: [:destroy]
 
   def index
+    @posts = []
+    @likes = current_user.likes
+     @likes.each do |l| 
+      @posts.push(Post.find(l.post_id))
+       end 
   end
 
   def create

@@ -1,25 +1,30 @@
-<h1>All Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Caption</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">All Posts</h1>
+    </div>
+</section>
 
-  <tbody>
-  <%=%>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= image_tag(post.image, size: "100x100") %></td>
-        <td><%= post.caption %></td>
-        <td><%= post.user.name %></td>
-        <td><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></td>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+       <% @posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="bd-placeholder-img card-img-top"><%= image_tag(post.image, width: "100%", height: "100%") %></div>
+                <div class="card-body">
+                    <p class="card-text"><%= post.caption %></p>
+                    <p class="card-text"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'View', post %></button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def all_posts
-    @post = Post.all
+    @posts = Post.all
   end
 
   def new
