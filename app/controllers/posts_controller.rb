@@ -60,7 +60,8 @@ class PostsController < ApplicationController
   end
 
   def set_post_private
-    if  @post = current_user.posts.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
+    if @post  
     else
       respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Not Allowed' }

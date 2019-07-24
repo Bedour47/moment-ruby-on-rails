@@ -1,27 +1,46 @@
-<%= form_with(model: @post, local: true) do |form| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="container-fluid">
+  <div class="row no-gutter">
+  <%= image_tag("background2.jpg", class: "d-none d-md-flex col-md-4 col-lg-6 image-responsive") %>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+            <h3 class="login-heading mb-4">Manage Post</h3>
+                    <%= form_with(model: @post, local: true) do |form| %>
+                      <% if @post.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                          <ul>
+                          <% @post.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+
+                      <div class="form-label-group">
+                        <%= form.text_field :image, autofocus: true, autocomplete: "url", placeholder: "Image url", class: "form-control",  id: "inputImage" %>
+                        <label for="inputImage">Image</label>
+                      </div>
+
+                      <div class="form-label-group">
+                        <%= form.text_field :caption, autocomplete: "current-caption", placeholder: "caption", class: "form-control",  id: "inputCaption" %>
+                        <label for="inputCaption">Caption</label>
+                      </div>
+
+                      <div class="actions">
+                        <%= form.submit class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+                      </div>
+                    <% end %>
+                    <div class="text-center"><br/>
+                    <%= link_to 'Back', posts_path %>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
   </div>
-
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_area :caption %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
