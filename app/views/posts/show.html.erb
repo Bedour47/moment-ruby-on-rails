@@ -14,9 +14,7 @@
                     <% end %>
                     <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-                  <strong class="card-title"><%= @post.user.username %>: </strong>
-                  <p class="card-text"><%= @post.caption %></p>
-
+                  <p class="card-text"><strong class="card-title"><%= link_to @post.user.username %> </strong><%= @post.caption %></p>
                 </div>
           </div>
         </div>
